@@ -55,12 +55,14 @@ fig, ax = plt.subplots(layout='constrained', figsize=(20*cm, 10*cm))
 ax.grid(axis='y', linestyle='-', linewidth=0.1)
 ax.set_axisbelow(True)
 
+# Balken
 for g in gruppen:
     dat = data['r' + g]*100
     err = data['rse' + g]*100
     # print(dat)
     offset = width * multiplier
-    rects = ax.bar(label_locations + offset, dat, width,
+    x = label_locations + offset
+    rects = ax.bar(x, dat, width,
                    label=gruppen_label[g],
                    color=bar_colors[g],
                    fill=bar_fill[g],
@@ -72,19 +74,26 @@ for g in gruppen:
                  color='black',
                  backgroundcolor='white',
                  fontsize='small')
-    ax.errorbar(label_locations + offset, dat, yerr=err, fmt=' ',
+    ax.errorbar(x, dat, yerr=err, fmt=' ',
                 color=bar_errcolor[g],
                 linewidth=2,
                 capthick=2,
                 capsize=3)
     multiplier += 1
 
+# geschweifte Klammern
+for xybalken in zip(label_locations + 1.5*width, data['rint']*100 + 7, data['sig']):
+    ax.annotate(xybalken[2], xy=(xybalken[0], xybalken[1]), xytext=(xybalken[0], xybalken[1]+5),
+                ha='center', va='bottom',
+                arrowprops=dict(arrowstyle='-[, widthB=2.5, lengthB=0.75', lw=2))
+
 ax.set_ylabel('Erreichte Punktzahl in Prozent')
 ax.set_title('Studierende Ingenieurwissenschaften (Pretest)')
 ax.set_xticks(label_locations + width, konzepte_label)
 ax.yaxis.set_major_formatter('{x:.0f}%')
 ax.yaxis.set_major_locator(plticker.MultipleLocator(base=10))
-ax.legend(loc='upper right', ncols=1, edgecolor='k')
+legend = ax.legend(loc='upper right', ncols=1, edgecolor='k')
+legend.get_frame().set_alpha(None)
 ax.set_ylim(0, 100)
 
 fig.tight_layout()
