@@ -94,6 +94,7 @@ ax.yaxis.set_major_formatter('{x:.0f}%')
 ax.yaxis.set_major_locator(plticker.MultipleLocator(base=10))
 legend = ax.legend(loc='upper right', ncols=1, edgecolor='k')
 legend.get_frame().set_alpha(None)
+ax.annotate(r'$\alpha=0{,}01$', xy=(4.9,73), ha='right', va='center')
 ax.set_ylim(0, 100)
 
 fig.tight_layout()
