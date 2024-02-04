@@ -4,6 +4,7 @@ import matplotlib.ticker as plticker
 import numpy as np
 
 filename_prefix = 'ingenieure'
+# filename_prefix = 'sachunterricht'
 
 # rm -rf ~/.cache/matplotlib/
 # from matplotlib import font_manager
@@ -21,7 +22,6 @@ my_orange = '#e80'
 
 gruppen = ['ges', 'int', 'kon']
 
-gruppen_label    = {'ges': 'gesamt' , 'int': 'EnWi,ST', 'kon': 'MB,BLVT' }
 bar_colors       = {'ges': my_blue  , 'int': 'w'      , 'kon': 'w'       }
 bar_fill         = {'ges': True     , 'int': True     , 'kon': True      }
 bar_hatch        = {'ges': None     , 'int': '////'   , 'kon': '\\\\\\\\'}
@@ -63,7 +63,7 @@ for g in gruppen:
     offset = width * multiplier
     x = label_locations + offset
     rects = ax.bar(x, dat, width,
-                   label=gruppen_label[g],
+                   label=data[g].loc['ogSK'],
                    color=bar_colors[g],
                    fill=bar_fill[g],
                    hatch=bar_hatch[g],
