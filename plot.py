@@ -88,7 +88,7 @@ for xybalken in zip(label_locations + 1.5*width, data['rint']*100 + 7, data['sig
                 arrowprops=dict(arrowstyle='-[, widthB=2.5, lengthB=0.75', lw=2))
 
 ax.set_ylabel('Erreichte Punktzahl in Prozent')
-ax.set_title('Studierende Ingenieurwissenschaften (Pretest)')
+ax.set_title('Studierende ' + data['studiengang'].loc['ogSK'] + ' (Pretest)')
 ax.set_xticks(label_locations + width, konzepte_label)
 ax.yaxis.set_major_formatter('{x:.0f}%')
 ax.yaxis.set_major_locator(plticker.MultipleLocator(base=10))
