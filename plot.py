@@ -3,6 +3,11 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as plticker
 import numpy as np
 
+# rounds 1.5 -> 2, 2.5 -> 3
+def round_half_up(n, decimals=0):
+    multiplier = 10**decimals
+    return np.floor(n * multiplier + 0.5) / multiplier
+
 filename_prefix = 'ingenieure'
 # filename_prefix = 'sachunterricht'
 
@@ -69,7 +74,7 @@ for g in gruppen:
                    hatch=bar_hatch[g],
                    edgecolor=bar_edgecolor[g])
     ax.bar_label(rects,
-                 labels=[f'{d:2.0f}%' for d in dat],
+                 labels=[f'{r:2.0f}%' for r in [round_half_up(d) for d in dat]],
                  label_type='center',
                  color='black',
                  backgroundcolor='white',
