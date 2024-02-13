@@ -15,7 +15,7 @@ plt.rcParams['font.sans-serif'] = 'Atkinson Hyperlegible'
 bar_colors    = {'SU': 'w'            , 'ING': 'w'             }
 bar_fill      = {'SU': True           , 'ING': True            }
 bar_hatch     = {'SU': style.my_hatch3, 'ING': style.my_hatch4 }
-bar_edgecolor = {'SU': style.my_blue  , 'ING': style.my_red    }
+bar_edgecolor = {'SU': style.my_brown , 'ING': style.my_purple }
 bar_textcolor = {'SU': 'w'            , 'ING': 'k'             }
 bar_errcolor  = {'SU': 'k'            , 'ING': 'k'             }
 
