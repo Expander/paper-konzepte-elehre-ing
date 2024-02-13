@@ -2,14 +2,19 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.ticker as plticker
 import numpy as np
+import sys
 
 # rounds 1.5 -> 2, 2.5 -> 3
 def round_half_up(n, decimals=0):
     multiplier = 10**decimals
     return np.floor(n * multiplier + 0.5) / multiplier
 
-filename_prefix = 'ingenieure'
-# filename_prefix = 'sachunterricht'
+if len(sys.argv) != 2:
+    raise "Error: 1 argument expected"
+
+filename_prefix = sys.argv[1]
+
+print(f'filename_prefix = {filename_prefix}')
 
 # rm -rf ~/.cache/matplotlib/
 # from matplotlib import font_manager
