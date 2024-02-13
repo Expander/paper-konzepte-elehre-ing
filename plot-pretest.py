@@ -17,20 +17,21 @@ print(f'filename_prefix = {filename_prefix}')
 # font_manager.findSystemFonts(fontpaths=None, fontext="ttf")
 # font_manager.findfont("Atkinson Hyperlegible")
 
-atkinson = 'Atkinson Hyperlegible'
 plt.rcParams['font.family'] = 'sans-serif'
-plt.rcParams['font.sans-serif'] = atkinson
+plt.rcParams['font.sans-serif'] = 'Atkinson Hyperlegible'
 
 my_blue   = '#00e'
 my_red    = '#c00'
 my_green  = '#090'
 my_orange = '#e80'
+my_hatch1 = '////'
+my_hatch2 = '\\\\\\\\'
 
 gruppen = ['ges', 'int', 'kon']
 
 bar_colors       = {'ges': my_blue  , 'int': 'w'      , 'kon': 'w'       }
 bar_fill         = {'ges': True     , 'int': True     , 'kon': True      }
-bar_hatch        = {'ges': None     , 'int': '////'   , 'kon': '\\\\\\\\'}
+bar_hatch        = {'ges': None     , 'int': my_hatch1, 'kon': my_hatch2 }
 bar_edgecolor    = {'ges': my_blue  , 'int': my_red   , 'kon': my_green  }
 bar_textcolor    = {'ges': 'w'      , 'int': 'k'      , 'kon': 'k'       }
 bar_errcolor     = {'ges': my_orange, 'int': 'k'      , 'kon': 'k'       }
