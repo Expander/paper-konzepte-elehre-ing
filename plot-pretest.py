@@ -1,3 +1,4 @@
+import daten
 import matplotlib.pyplot as plt
 import matplotlib.ticker as plticker
 import numpy as np
@@ -21,8 +22,6 @@ print(f'filename_prefix = {filename_prefix}')
 plt.rcParams['font.family'] = 'sans-serif'
 plt.rcParams['font.sans-serif'] = 'Atkinson Hyperlegible'
 
-gruppen = ['ges', 'int', 'kon']
-
 bar_colors    = {'ges': style.my_blue  , 'int': 'w'            , 'kon': 'w'             }
 bar_fill      = {'ges': True           , 'int': True           , 'kon': True            }
 bar_hatch     = {'ges': None           , 'int': style.my_hatch1, 'kon': style.my_hatch2 }
@@ -33,7 +32,7 @@ bar_errcolor  = {'ges': style.my_orange, 'int': 'k'            , 'kon': 'k'     
 # daten einlesen
 data = pd.read_csv(filename_prefix + '.csv', delimiter=';')
 
-for g in gruppen:
+for g in daten.gruppen:
     # Standard-Error
     data['se'  + g] = data['sd' + g]/np.sqrt(data['N' + g])
     # relativer Punkteanteil 
@@ -41,13 +40,10 @@ for g in gruppen:
     # relativer Standard-Error
     data['rse' + g] = data['se' + g]/data['PunkteMax']
 
-konzepte = data['Konzept']
-konzepte_label = ['offene und geschl.\nStromkreise', 'Reihen- u.\nParallelschaltungen', 'elektr.\nStromstärke', 'elektr.\nWiderstand', 'elektr.\nSpannung']
-
 data.set_index('Konzept', inplace=True)
 print(data)
 
-label_locations = np.arange(len(konzepte))
+label_locations = np.arange(len(daten.konzepte))
 width = 0.28
 multiplier = 0
 
@@ -56,7 +52,7 @@ ax.grid(axis='y', linestyle='-', linewidth=1)
 ax.set_axisbelow(True)
 
 # Balken
-for g in gruppen:
+for g in daten.gruppen:
     dat = data['r' + g]*100
     err = data['rse' + g]*100
     # print(dat)
@@ -89,7 +85,7 @@ for xybalken in zip(label_locations + 1.5*width, data['rint']*100 + 7, data['sig
 
 ax.set_ylabel('erreichte Punktzahl in Prozent')
 # ax.set_title('Studierende ' + data['studiengang'].loc['ogSK'] + ' (Pretest)')
-ax.set_xticks(label_locations + width, konzepte_label)
+ax.set_xticks(label_locations + width, daten.konzepte_label)
 ax.yaxis.set_major_formatter('{x:.0f}%')
 ax.yaxis.set_major_locator(plticker.MultipleLocator(base=10))
 legend = ax.legend(loc='upper right', ncol=1, edgecolor='k')
