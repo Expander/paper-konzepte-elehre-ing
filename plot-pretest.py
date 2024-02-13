@@ -61,7 +61,7 @@ width = 0.28
 multiplier = 0
 
 cm = 1/2.54
-fig, ax = plt.subplots(layout='constrained', figsize=(20*cm, 10*cm))
+fig, ax = plt.subplots(figsize=(20*cm, 10*cm))
 ax.grid(axis='y', linestyle='-', linewidth=1)
 ax.set_axisbelow(True)
 
