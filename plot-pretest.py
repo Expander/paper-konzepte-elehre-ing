@@ -3,11 +3,7 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as plticker
 import numpy as np
 import sys
-
-# rounds 1.5 -> 2, 2.5 -> 3
-def round_half_up(n, decimals=0):
-    multiplier = 10**decimals
-    return np.floor(n * multiplier + 0.5) / multiplier
+import rounding
 
 if len(sys.argv) != 2:
     raise "Error: 1 argument expected"
@@ -79,7 +75,7 @@ for g in gruppen:
                    hatch=bar_hatch[g],
                    edgecolor=bar_edgecolor[g])
     ax.bar_label(rects,
-                 labels=[f'{r:2.0f}%' for r in [round_half_up(d) for d in dat]],
+                 labels=[f'{r:2.0f}%' for r in [rounding.round_half_up(d) for d in dat]],
                  label_type='center',
                  color='black',
                  backgroundcolor='white',
