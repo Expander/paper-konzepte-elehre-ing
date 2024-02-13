@@ -2,3 +2,4 @@
 
 python3 plot-pretest.py 'pretest-ingenieure'
 python3 plot-pretest.py 'pretest-sachunterricht'
+python3 plot-pretest-vgl-SU-ING.py
