@@ -12,5 +12,7 @@ my_hatch4 = '----'
 
 cm = 1/2.54
 my_figsize = (20*cm, 10*cm)
+my_figsize_1bar = (17*cm, 10*cm)
 
 width = 0.28
+width_1bar = 0.4

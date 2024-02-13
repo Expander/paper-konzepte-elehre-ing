@@ -44,10 +44,10 @@ data.set_index('Konzept', inplace=True)
 print(data)
 
 label_locations = np.arange(len(daten.konzepte))
-width = style.width
+width = style.width_1bar
 multiplier = 0
 
-fig, ax = plt.subplots(figsize=style.my_figsize)
+fig, ax = plt.subplots(figsize=style.my_figsize_1bar)
 ax.grid(axis='y', linestyle='-', linewidth=1)
 ax.set_axisbelow(True)
 
