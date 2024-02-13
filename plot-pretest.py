@@ -1,9 +1,10 @@
-import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.ticker as plticker
 import numpy as np
-import sys
+import pandas as pd
 import rounding
+import style
+import sys
 
 if len(sys.argv) != 2:
     raise "Error: 1 argument expected"
@@ -20,21 +21,14 @@ print(f'filename_prefix = {filename_prefix}')
 plt.rcParams['font.family'] = 'sans-serif'
 plt.rcParams['font.sans-serif'] = 'Atkinson Hyperlegible'
 
-my_blue   = '#00e'
-my_red    = '#c00'
-my_green  = '#090'
-my_orange = '#e80'
-my_hatch1 = '////'
-my_hatch2 = '\\\\\\\\'
-
 gruppen = ['ges', 'int', 'kon']
 
-bar_colors       = {'ges': my_blue  , 'int': 'w'      , 'kon': 'w'       }
-bar_fill         = {'ges': True     , 'int': True     , 'kon': True      }
-bar_hatch        = {'ges': None     , 'int': my_hatch1, 'kon': my_hatch2 }
-bar_edgecolor    = {'ges': my_blue  , 'int': my_red   , 'kon': my_green  }
-bar_textcolor    = {'ges': 'w'      , 'int': 'k'      , 'kon': 'k'       }
-bar_errcolor     = {'ges': my_orange, 'int': 'k'      , 'kon': 'k'       }
+bar_colors    = {'ges': style.my_blue  , 'int': 'w'            , 'kon': 'w'             }
+bar_fill      = {'ges': True           , 'int': True           , 'kon': True            }
+bar_hatch     = {'ges': None           , 'int': style.my_hatch1, 'kon': style.my_hatch2 }
+bar_edgecolor = {'ges': style.my_blue  , 'int': style.my_red   , 'kon': style.my_green  }
+bar_textcolor = {'ges': 'w'            , 'int': 'k'            , 'kon': 'k'             }
+bar_errcolor  = {'ges': style.my_orange, 'int': 'k'            , 'kon': 'k'             }
 
 # daten einlesen
 data = pd.read_csv(filename_prefix + '.csv', delimiter=';')
@@ -57,8 +51,7 @@ label_locations = np.arange(len(konzepte))
 width = 0.28
 multiplier = 0
 
-cm = 1/2.54
-fig, ax = plt.subplots(figsize=(20*cm, 10*cm))
+fig, ax = plt.subplots(figsize=style.my_figsize)
 ax.grid(axis='y', linestyle='-', linewidth=1)
 ax.set_axisbelow(True)
 
