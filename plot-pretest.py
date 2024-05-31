@@ -88,4 +88,4 @@ ax.set_ylim(0, 100)
 
 fig.tight_layout()
 fig.savefig(filename_prefix + '.pdf')
-fig.savefig(filename_prefix + '.png', dpi=300)
+fig.savefig(filename_prefix + '.png', dpi=style.dpi_resolution)
