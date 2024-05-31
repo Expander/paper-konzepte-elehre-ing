@@ -1,4 +1,5 @@
 import daten
+import font
 import matplotlib.pyplot as plt
 import matplotlib.ticker as plticker
 import numpy as np
@@ -8,9 +9,6 @@ import style
 
 filename_prefix_SU = 'pretest-sachunterricht'
 filename_prefix_ING = 'pretest-ingenieure-all'
-
-plt.rcParams['font.family'] = 'sans-serif'
-plt.rcParams['font.sans-serif'] = 'Atkinson Hyperlegible'
 
 bar_colors    = {'SU': 'w'            , 'ING': 'w'             }
 bar_fill      = {'SU': True           , 'ING': True            }
@@ -84,7 +82,7 @@ ax.yaxis.set_major_formatter('{x:.0f}%')
 ax.yaxis.set_major_locator(plticker.MultipleLocator(base=10))
 legend = ax.legend(loc='upper right', ncol=1, edgecolor='k')
 legend.get_frame().set_alpha(None)
-ax.annotate(r'$\alpha=0{,}01$', xy=(4.6,80), ha='right', va='center')
+ax.annotate(r'$\mathdefault{\alpha=0{,}01}$', xy=(4.6,80), ha='right', va='center')
 ax.set_ylim(0, 100)
 
 filename_prefix = 'pretest-vgl-SU-ING'

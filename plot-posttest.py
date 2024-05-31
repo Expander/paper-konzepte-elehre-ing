@@ -1,4 +1,5 @@
 import daten
+import font
 import matplotlib.pyplot as plt
 import matplotlib.ticker as plticker
 import numpy as np
@@ -13,14 +14,6 @@ if len(sys.argv) != 2:
 filename_prefix = sys.argv[1]
 
 print(f'filename_prefix = {filename_prefix}')
-
-# rm -rf ~/.cache/matplotlib/
-# from matplotlib import font_manager
-# font_manager.findSystemFonts(fontpaths=None, fontext="ttf")
-# font_manager.findfont("Atkinson Hyperlegible")
-
-plt.rcParams['font.family'] = 'sans-serif'
-plt.rcParams['font.sans-serif'] = 'Atkinson Hyperlegible'
 
 bar_colors    = {'ges': style.my_blue  , 'int': 'w'            , 'kon': 'w'             }
 bar_fill      = {'ges': True           , 'int': True           , 'kon': True            }
@@ -84,7 +77,7 @@ ax.yaxis.set_major_formatter('{x:.0f}%')
 ax.yaxis.set_major_locator(plticker.MultipleLocator(base=10))
 legend = ax.legend(loc='upper right', ncol=1, edgecolor='k')
 legend.get_frame().set_alpha(None)
-ax.annotate(r'$\alpha=0{,}01$', xy=(4.9,73), ha='right', va='center')
+ax.annotate(r'$\mathdefault{\alpha=0{,}01}$', xy=(4.9,73), ha='right', va='center')
 ax.set_ylim(0, 100)
 
 fig.tight_layout()
