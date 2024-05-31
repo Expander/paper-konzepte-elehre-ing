@@ -71,7 +71,7 @@ for g in daten.gruppen:
     multiplier += 1
 
 # geschweifte Klammern
-for xybalken in zip(label_locations + 1.5*width, data['rint']*100 + 7, data['sig']):
+for xybalken in zip(label_locations + 1.5*width, (data['rint'] + data['rseint'])*100 + 5, data['sig']):
     ax.annotate(xybalken[2], xy=(xybalken[0], xybalken[1]), xytext=(xybalken[0], xybalken[1]+5),
                 ha='center', va='bottom',
                 arrowprops=dict(arrowstyle='-[, widthB=2.5, lengthB=0.75', lw=2))

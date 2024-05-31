@@ -71,7 +71,7 @@ for d in data_all:
 significance = ['sig.', 'sig.', 'n.s.', 'sig.', 'sig.']
 
 # geschweifte Klammern
-for xybalken in zip(label_locations + 0.5*width, data_all['ING']['rges']*100 + 7, significance):
+for xybalken in zip(label_locations + 0.5*width, (data_all['ING']['rges'] + data_all['ING']['rseges'])*100 + 5, significance):
     ax.annotate(xybalken[2], xy=(xybalken[0], xybalken[1]), xytext=(xybalken[0], xybalken[1]+5),
                 ha='center', va='bottom',
                 arrowprops=dict(arrowstyle='-[, widthB=2.5, lengthB=0.75', lw=2))
