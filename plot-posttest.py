@@ -37,7 +37,7 @@ data.set_index('Konzept', inplace=True)
 print(data)
 
 label_locations = np.arange(len(daten.konzepte))
-width = style.width_1bar
+width = style.width_2bar
 multiplier = 0
 
 fig, ax = plt.subplots(figsize=style.my_figsize_1bar)
@@ -45,7 +45,7 @@ ax.grid(axis='y', linestyle='-', linewidth=1)
 ax.set_axisbelow(True)
 
 # Balken
-for g in ['int']:
+for g in ['int', 'kon']:
     dat = data['r' + g]*100
     err = data['rse' + g]*100
     # print(dat)
@@ -70,9 +70,15 @@ for g in ['int']:
                 capsize=3)
     multiplier += 1
 
+# geschweifte Klammern
+for xybalken in zip(label_locations + 0.5*width, np.minimum((data['rint'] + data['rseint'])*100 + 5, 100), data['sig']):
+    ax.annotate(xybalken[2], xy=(xybalken[0], xybalken[1]), xytext=(xybalken[0], xybalken[1]+5),
+                ha='center', va='bottom',
+                arrowprops=dict(arrowstyle='-[, widthB=2.5, lengthB=0.75', lw=2))
+
 ax.set_ylabel('erreichte Punktzahl in Prozent')
 # ax.set_title('Studierende ' + data['studiengang'].loc['ogSK'] + ' (Pretest)')
-ax.set_xticks(label_locations, daten.konzepte_label)
+ax.set_xticks(label_locations + 0.5*width, daten.konzepte_label)
 ax.yaxis.set_major_formatter('{x:.0f}%')
 ax.yaxis.set_major_locator(plticker.MultipleLocator(base=10))
 legend = ax.legend(loc='upper right', ncol=1, edgecolor='k')

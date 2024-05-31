@@ -16,5 +16,6 @@ my_figsize_1bar = (17*cm, 10*cm)
 
 width = 0.28
 width_1bar = 0.4
+width_2bar = 0.34
 
 dpi_resolution = 600
