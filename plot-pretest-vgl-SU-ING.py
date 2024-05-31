@@ -7,7 +7,7 @@ import rounding
 import style
 
 filename_prefix_SU = 'pretest-sachunterricht'
-filename_prefix_ING = 'pretest-ingenieure'
+filename_prefix_ING = 'pretest-ingenieure-all'
 
 plt.rcParams['font.family'] = 'sans-serif'
 plt.rcParams['font.sans-serif'] = 'Atkinson Hyperlegible'
